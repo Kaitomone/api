@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Configurateur de voile</title>
+<!--<link href="./bootstrap.min.css" rel="stylesheet">!-->
+
+<meta name="theme-color" content="#7952b3">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <!--<link href="./form-validation.css" rel="stylesheet">!-->
+  </head>
+  <body class="bg-light">
+    <div class="container">
+        <main>
+            <div class="row g-5">
+                <div class="col-md-7 col-lg-8">
+                <h4 class="mb-3">Modèle de bateau</h4>
+                <form class="needs-validation" novalidate>
+                    <div class="row g-3">
+                    <div class="col-sm-6">
+                        <label for="firstName" class="form-label">Modèle</label>
+                        <input type="select" list="laliste" class="form-control" id="changeMonBateau" placeholder="" value="{{bateau}}" (keyup)="changeMonBateau($event)" required>
+                        <datalist id="laliste" >
+                        <option *ngFor = "let bateau of listeBateau" value="{{bateau.ref}}">{{bateau.name}}</option>
+                        </datalist>
+                        <div class="invalid-feedback">
+                        le modèle du bateau est requis.
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="lastName" class="form-label">Longueur (en mètre)</label>
+                        <div class="input-group">
+                        <input type="text" class="form-control" id="BoatLength" placeholder="" value="{{lengthm}}" required>
+                        <span class="input-group-text">mètres</span>
+                    </div>
+
+                    <div class="invalid-feedback">
+                        La longueur est requise.
+                    </div>
+
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <input type="button" class="btn btn-sm btn-warning" value="Confirmer la sélection du bateau" (click)="choixBateau()">
+                    </div>
+                    <hr class="my-4">
+                    <div class="col-3">
+                        <h5>Les grands-voiles</h5>
+                        <label for="gvl" class="form-label">Grand-voile lattée</label>
+                        <div class="input-group">
+                        <input type="text" class="form-control" id="gvl" placeholder="" value="{{gvl}}">
+                        <span class="input-group-text">m2</span>
+                        </div>
+                        <label for="gvsl" class="form-label">Grand-voile semi-lattée</label>
+                        <div class="input-group">
+                        <input type="text" class="form-control" id="gvsl" placeholder="" value="{{gvsl}}">
+                        <span class="input-group-text">m2</span>
+                        </div>
+                        <label for="gve" class="form-label">Grand-voile sur enrouleur</label>
+                        <div class="input-group">
+                        <input type="text" class="form-control" id="gve" placeholder="" value="{{gve}}">
+                        <span class="input-group-text">m2</span>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <h5>Les voiles d'avant</h5>
+                        <label for="gm" class="form-label">Génois sur mousquetons</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="gm" placeholder="" value="{{gm}}">
+                            <span class="input-group-text">m2</span>
+                        </div>
+                        <label for="gve" class="form-label">Génois sur enrouleur</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="ge" placeholder="" value="{{ge}}">
+                            <span class="input-group-text">m2</span>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <h5>Les voiles de portant</h5>
+                        <label for="ss" class="form-label">Spi symétrique</label>
+                        <div class="input-group">
+                        <input type="text" class="form-control" id="ss" placeholder="" value="{{ss}}">
+                        <span class="input-group-text">m2</span>
+                        </div>
+                        <label for="sa" class="form-label">Spi asymétrique</label>
+                        <div class="input-group">
+                        <input type="text" class="form-control" id="sa" placeholder="" value="{{sa}}">
+                        <span class="input-group-text">m2</span>
+                        </div>
+                        <label for="gs" class="form-label">Gennaker / code 0</label>
+                        <div class="input-group">
+                        <input type="text" class="form-control" id="gs" placeholder="" value="{{gs}}">
+                        <span class="input-group-text">m2</span>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <h5>Accessoires</h5>
+                        <label for="access" class="form-label">Longueur de la bôme</label>
+                        <div class="input-group">
+                        <input type="text" class="form-control" id="access" placeholder="" >
+                        <span class="input-group-text">m2</span>
+                        </div>
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <input type="button" id="boutonLongueur" class="btn btn-sm btn-warning " value="Valider mes mesures" disabled="true" (click)="prixVoiles()">
+                    </div>
+                <!--</form>!-->
+                <hr class="my-4">
+                <div class="col-12">
+                    <ul class="nav nav-tabs">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="gv-tab" data-bs-toggle="tab" data-bs-target="#tab-gv" type="button" role="tab" aria-controls="gv" aria-selected="true">Grands-voiles</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="ge-tab" data-bs-toggle="tab" data-bs-target="#tab-ge" type="button" role="tab" aria-controls="ge" aria-selected="true">Voiles d'avant</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="spi-tab" data-bs-toggle="tab" data-bs-target="#tab-spi" type="button" role="tab" aria-controls="spi" aria-selected="true">Voiles de portant</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="access-tab" data-bs-toggle="tab" data-bs-target="#tab-access" type="button" role="tab" aria-controls="access" aria-selected="true">Accessoires</button>
+                    </li>
+                    </ul>
+                    <div class="tab-content" id="tab-sails">
+                    <div class="tab-pane fade show active" id="tab-gv" role="tabpanel" aria-labelledby="gv-tab">
+                        <div class="row"><p></p></div>
+                        <div class="row">
+                        <img src=".\images\gvl.png" class="col-md-3 img-responsive">
+                            <div class="col-md-6">
+                            {{descriptiongvl1}}
+                            <ul>
+                                <li>Lorem ipsum dolor sit amet</li>
+                                <li>Lorem ipsum dolor sit amet</li>
+                                <li>Lorem ipsum dolor sit amet</li>
+                            </ul>
+                            </div>
+                            <div class="col-md-3">À partir de 9999,99 $ <button class="btn btn-primary">Configurer</button></div>
+                        </div>
+                        <hr class="my-4">
+                        <div class="row">
+                        <img src=".images/gvl.png" class="col-md-3 img-responsive">
+                        <div class="col-md-6">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc non luctus ligula. Fusce lobortis neque eget auctor viverra. Maecenas mattis vehicula nibh, eu dapibus quam. Donec porttitor rutrum iaculis. Nulla quam metus, fringilla a nunc non, malesuada placerat nisl. Quisque placerat diam sed nunc dapibus placerat. Nunc congue non sapien non iaculis.
+                            <ul>
+                            <li>Lorem ipsum dolor sit amet</li>
+                            <li>Lorem ipsum dolor sit amet</li>
+                            <li>Lorem ipsum dolor sit amet</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">À partir de 9999,99 $ <button class="btn btn-primary">Configurer</button></div>
+                        </div>
+                        <hr class="my-4">
+                        <div class="row">
+                        <img src="./gvl.png" class="col-md-3 img-responsive">
+                        <div class="col-md-6">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc non luctus ligula. Fusce lobortis neque eget auctor viverra. Maecenas mattis vehicula nibh, eu dapibus quam. Donec porttitor rutrum iaculis. Nulla quam metus, fringilla a nunc non, malesuada placerat nisl. Quisque placerat diam sed nunc dapibus placerat. Nunc congue non sapien non iaculis.
+                            <ul>
+                            <li>Lorem ipsum dolor sit amet</li>
+                            <li>Lorem ipsum dolor sit amet</li>
+                            <li>Lorem ipsum dolor sit amet</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3">À partir de 9999,99 $ <button class="btn btn-primary">Configurer</button></div>
+                        </div>
+                        </div>
+                        <div class="tab-pane fade show " id="tab-ge" role="tabpanel" aria-labelledby="ge-tab"></div>
+                        <div class="tab-pane fade show " id="tab-spi" role="tabpanel" aria-labelledby="spi-tab"></div>
+                        <div class="tab-pane fade show " id="tab-access" role="tabpanel" aria-labelledby="access-tab"></div>
+                    </div>
+                </div>
+                </div>
+                <hr class="my-4">
+            <!--</div>!-->
+            <hr class="my-4">
+            <!--</div>!-->
+        <!--</main>!-->
+    <!--</div>!-->
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+    </footer>
+    <script src="./bootstrap.bundle.min.js"></script>
+  <!--</body>!-->
+<!--</html>!-->
