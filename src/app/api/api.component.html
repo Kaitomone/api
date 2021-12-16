@@ -130,10 +130,10 @@
                 <div class="col-12">
                     <ul class="nav nav-tabs">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link " id="gv-tab" data-bs-toggle="tab" data-bs-target="#tab-gv" type="button" role="tab" aria-controls="gv" aria-selected="true">Grands-voiles</button>
+                        <button class="nav-link active" id="gv-tab" data-bs-toggle="tab" data-bs-target="#tab-gv" type="button" role="tab" aria-controls="gv" aria-selected="true">Grands-voiles</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="ge-tab" data-bs-toggle="tab" data-bs-target="#tab-ge" type="button" role="tab" aria-controls="ge" aria-selected="true">Voiles d'avant</button>
+                        <button class="nav-link " id="ge-tab" data-bs-toggle="tab" data-bs-target="#tab-ge" type="button" role="tab" aria-controls="ge" aria-selected="true">Voiles d'avant</button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="spi-tab" data-bs-toggle="tab" data-bs-target="#tab-spi" type="button" role="tab" aria-controls="spi" aria-selected="true">Voiles de portant</button>
@@ -143,61 +143,98 @@
                     </li>
                     </ul>
                     <div class="tab-content" id="tab-sails">
-                      <div class="tab-pane fade show " id="tab-gv" role="tabpanel" aria-labelledby="gv-tab">
+                      <div class="tab-pane fade show active" id="tab-gv" role="tabpanel" aria-labelledby="gv-tab">
                         <div class="row"><p></p></div>
                         <div class="row">
-                          <img src=".\images\gve.png" class="col-md-3 img-responsive">
-                          <div class="col-md-6">
-                            {{descriptiongvl1}}
+                          <img src="./gvl.png" class="col-md-3 img-responsive">
+                          <div class="col-md-6" [innerHTML]="descriptiongvl1">
                           </div>
                           <div class="col-md-3">À partir de {{prixgvl1}} $ <button class="btn btn-primary">Configurer</button></div>
                         </div>
                         <hr class="my-4">
                         <div class="row">
                           <img src=".images/gve.png" class="col-md-3 img-responsive">
-                          <div class="col-md-6">
-                              {{descriptiongve2}}
+                          <div class="col-md-6" [innerHTML]="descriptiongvl2">
                           </div>
-                          <div class="col-md-3">À partir de {{prixgve2}} $ <button class="btn btn-primary">Configurer</button></div>
+                          <div class="col-md-3">À partir de {{prixgvl2}} $ <button class="btn btn-primary">Configurer</button></div>
                         </div>
                         <hr class="my-4">
                         <div class="row">
                           <img src="./gve.png" class="col-md-3 img-responsive">
-                          <div class="col-md-6">
-                            {{descriptiongve3}}
+                          <div class="col-md-6" [innerHTML]=descriptiongvl3>
                           </div>
-                          <div class="col-md-3">À partir de {{prixgve3}} $ <button class="btn btn-primary">Configurer</button></div>
+                          <div class="col-md-3">À partir de {{prixgvl3}} $ <button class="btn btn-primary">Configurer</button></div>
                         </div>
-                      </div>
+                        </div>
+
                       <div class="tab-pane fade show active" id="tab-ge" role="tabpanel" aria-labelledby="ge-tab">
                           <div class="row"><p></p></div>
                               <div class="row">
-                                <img src=".\images\gve.png" class="col-md-3 img-responsive">
-                                <div class="col-md-6">
-                                  {{descriptiongve1}}
+                                <img src="./app/api/gvl.png" class="col-md-3 img-responsive">
+                                <div class="col-md-6" [innerHTML]="descriptiongve1">
                                 </div>
                                 <div class="col-md-3">À partir de {{prixgve1}} $ <button class="btn btn-primary">Configurer</button></div>
                               </div>
                               <hr class="my-4">
                               <div class="row">
                                 <img src=".images/gve.png" class="col-md-3 img-responsive">
-                                <div class="col-md-6">
-                                    {{descriptiongve2}}
+                                <div class="col-md-6" [innerHTML]="descriptiongve2">
                                 </div>
                                 <div class="col-md-3">À partir de {{prixgve2}} $ <button class="btn btn-primary">Configurer</button></div>
                               </div>
                               <hr class="my-4">
                               <div class="row">
                                 <img src="./gve.png" class="col-md-3 img-responsive">
-                                <div class="col-md-6">
-                                  {{descriptiongve3}}
+                                <div class="col-md-6" [innerHTML]="descriptiongve3">
                                 </div>
                                 <div class="col-md-3">À partir de {{prixgve3}} $ <button class="btn btn-primary">Configurer</button></div>
                               </div>
                       </div>
 
+                        <div class="tab-pane fade show active" id="tab-spi" role="tabpanel" aria-labelledby="spi-tab">
+                          <div class="row"><p></p></div>
+                              <div class="row">
+                                <img src=".\images\gve.png" class="col-md-3 img-responsive">
+                                <div class="col-md-6" [innerHTML]="descriptionspi1">
+                                </div>
+                                <div class="col-md-3">À partir de {{prixspi1}} $ <button class="btn btn-primary">Configurer</button></div>
+                              </div>
+                              <hr class="my-4">
+                              <div class="row">
+                                <img src=".images/gve.png" class="col-md-3 img-responsive">
+                                <div class="col-md-6" [innerHTML]="descriptionspi2">
+                                </div>
+                                <div class="col-md-3">À partir de {{prixspi2}} $ <button class="btn btn-primary">Configurer</button></div>
+                              </div>
+                              <hr class="my-4">
+                              <div class="row">
+                                <img src="./gve.png" class="col-md-3 img-responsive">
+                                <div class="col-md-6" [innerHTML]="descriptionspi3">
+                                </div>
+                                <div class="col-md-3">À partir de {{prixspi3}} $ <button class="btn btn-primary">Configurer</button></div>
+                              </div>
 
-                        <div class="tab-pane fade show " id="tab-spi" role="tabpanel" aria-labelledby="spi-tab"></div>
+                              <div class="row">
+                                <img src=".\images\gve.png" class="col-md-3 img-responsive">
+                                <div class="col-md-6" [innerHTML]="descriptionspi4">
+                                </div>
+                                <div class="col-md-3">À partir de {{prixspi4}} $ <button class="btn btn-primary">Configurer</button></div>
+                              </div>
+                              <hr class="my-4">
+                              <div class="row">
+                                <img src=".images/gve.png" class="col-md-3 img-responsive">
+                                <div class="col-md-6" [innerHTML]="descriptionspi5">
+                                </div>
+                                <div class="col-md-3">À partir de {{prixspi5}} $ <button class="btn btn-primary">Configurer</button></div>
+                              </div>
+                              <hr class="my-4">
+                              <div class="row">
+                                <img src="./gve.png" class="col-md-3 img-responsive">
+                                <div class="col-md-6" [innerHTML]="descriptionspi6">
+                                </div>
+                                <div class="col-md-3">À partir de {{prixspi6}} $ <button class="btn btn-primary">Configurer</button></div>
+                              </div>
+                          </div>
                         <div class="tab-pane fade show " id="tab-access" role="tabpanel" aria-labelledby="access-tab"></div>
                     </div>
                 </div>
