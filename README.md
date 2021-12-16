@@ -1,27 +1,29 @@
-# Api
+# Pré-requis
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.3.
+Angular CLI: 13.0.3
+Node: 16.13.0
+Une connexion internet
 
-## Development server
+# Besoin du client
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Ce projet permet de créer une page web, sur celle-ci nous pouvons interroger une api pour rechercher, parmis une grande base de données, des bateaux à voiles.
+Ensuite, le client voit les mesures de voiles par défaut, et peut lui-même les modifier.
+Ensuite une liste de voiles lui est alors présentés, avec leur description et leurs prix.
 
-## Code scaffolding
+# Utilité
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- On peut rechercher un bateau en mettant au minimum 3 caractères et au maximum 40
+- On peut alors le sélectionner
+- En confirmant nous avons les mesures des voiles
+- On peut alors confirmer notre étape, et s'affiche nos différentes voiles dans une catégorie
 
-## Build
+# Résultats
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- On ne peut pas naviguer parmis les différents onglets
+- Toutes les voiles sont affichés à la suite et on voit les lignes où le résultat retourné était vide
+- Les images ne sont pas chargés
 
-## Running unit tests
+# Reste à faire
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Je pense qu'avec 2h de travail je pourrais naviguer parmis les différents onglets et bien afficher les voiles.
+Avec 2-3h supplémentaires je pourrais améliorer l'aspect graphique et le code.
