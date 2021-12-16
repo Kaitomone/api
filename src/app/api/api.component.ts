@@ -46,17 +46,32 @@ export class ApiComponent implements OnInit {
   sa = "";
   gs = "";
 
-  descriptiongvl1 = "Premiere description";
-  nomgvl1 = "";
 
+  descriptiongve1 = "";
+  prixgve1 = "";
+  descriptiongve2 = "";
+  prixgve2 = "";
+  descriptiongve3 = "";
+  prixgve3 = "";
+
+  descriptiongvsl1 = "";
+  prixgvsl1 = "";
+  descriptiongvsl2 = "";
+  prixgvsl2 = "";
+  descriptiongvsl3 = "";
+  prixgvsl3 = "";
+
+  descriptiongvl1 = "";
+  prixgvl1 = "";
+  descriptiongvl2 = "";
+  prixgvl2 = "";
+  descriptiongvl3 = "";
+  prixgvl3 = "";
 
   changeMonBateau($event:any)
   {
     this.bateau = $event.target.value;
-    console.log($event.target.value);
     this.rechercheDeBateau = this.api + this.bateau;
-
-    console.log(this.rechercheDeBateau);
 
     this.rechercheBateau($event);
   }
@@ -68,7 +83,7 @@ export class ApiComponent implements OnInit {
       {
         this.http.get<any>(this.rechercheDeBateau).subscribe(respond => {
           this.listeBateau = respond.response.datas;
-          console.log(this.listeBateau);
+          console.log(respond.response.datas);
         });
       }
 
@@ -78,8 +93,6 @@ export class ApiComponent implements OnInit {
   choixBateau()
   {
     this.rechercheAvanceBateau = this.apiRef + this.bateau;
-
-    console.log(this.rechercheAvanceBateau);
 
     this.rechercheMesure(this.bateau);
   };
@@ -109,8 +122,6 @@ export class ApiComponent implements OnInit {
     this.rechercheAvancePrix = this.apiPrix + "?length=" + this.lengthm + "&gvsl=" + this.gvsl+ "&gvl=" + this.gvl
     + "&gve=" + this.gve +"&gm=" + this.gm + "&ge=" + this.ge + "&ss=" + this.ss + "&sa=" + this.sa +"&gs=" + this.gs;
 
-    console.log(this.rechercheAvancePrix);
-
     this.recherchePrixVoiles();
   };
 
@@ -118,12 +129,58 @@ export class ApiComponent implements OnInit {
   {
     this.http.get<any>(this.rechercheAvancePrix).subscribe(respond => {
       console.log(respond.response.datas);
-      this.descriptiongvl1 = respond.response.datas.description;
-      console.log(this.descriptiongvl1);
+
+      //if (respond.response.datas[0].unitPrice != 0)
+      //{
+        this.descriptiongvl1 = respond.response.datas[6].description;
+        this.prixgve1 = respond.response.datas[6].price.unitPrice;
+      //}
+      //if (respond.response.datas[1].unitPrice != 0)
+      //{
+        this.descriptiongvl2 = respond.response.datas[7].description;
+        this.prixgvl2 = respond.response.datas[7].price.unitPrice;
+      //}
+      //else {
+        //this.descriptiongve1 = respond.response.datas[2].description;
+        //this.prixgve1 = respond.response.datas[2].price.unitPrice;
+      //}
+
+      //if (respond.response.datas[0].unitPrice != 0)
+      //{
+        this.descriptiongve1 = respond.response.datas[0].description;
+        this.prixgve1 = respond.response.datas[0].price.unitPrice;
+      //}
+      //if (respond.response.datas[1].unitPrice != 0)
+      //{
+        this.descriptiongve2 = respond.response.datas[1].description;
+        this.prixgve2= respond.response.datas[1].price.unitPrice;
+      //}
+      //else {
+        this.descriptiongve3 = respond.response.datas[2].description;
+        this.prixgve3 = respond.response.datas[2].price.unitPrice;
+      //}
+
+      if (respond.response.datas[6].unitPrice != 0)
+      {
+        this.descriptiongvl1 = respond.response.datas[6].description;
+        this.prixgvl1 = respond.response.datas[6].price.unitPrice;
+      }
+      else {
+        this.descriptiongvl1 = respond.response.datas[7].description;
+        this.prixgvl1 = respond.response.datas[7].price.unitPrice;
+      }
+
+
 
 
     });
   };
+
+  changeFocus1(event:any)
+  {
+    console.log(event);
+
+  }
 
 
   ngOnInit(): void {}
